@@ -1,2 +1,4 @@
 import Test from "./main.js"
-console.log(Test.add(1,2));
+//加减乘除（add/subtract/multiply/divide)
+console.log(Test.multiply(2, 11));
+console.log(Test.divide(-3.33, -4));

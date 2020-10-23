@@ -19,37 +19,45 @@ class Test{
 	operation(a,b,op){
 		var o1 = toInteger(a);
 		var o2 = toInteger(b);
-		var n1 = o1.num;
-		var n2 = o2.num;
-		var t1 = o1.times;
-		var t2 = o2.times;
-		var max = t1 > t2 ? t1 : t2;
+		var n1 = o1.num; //整数
+		var n2 = o2.num; //整数
+		var t1 = o1.times; //位数
+		var t2 = o2.times; //位数
+		var max = t1 > t2 ? t1 : t2; //大的位数
 		var result = null;
 	    switch (op) {
-    	case 'add':
-	       	if (t1 === t2) { // 两个小数位数相同
-	            result = n1 + n2
-	       	} else if (t1 > t2) { // o1 小数位 大于 o2
-	            result = n1 + n2 * (t1 / t2)
-	       	} else { // o1 小数位 小于 o2
-	            result = n1 * (t2 / t1) + n2
-	       	}
-       	return result / max;
-       	case 'subtract':
-            if (t1 === t2) {
-                result = n1 - n2
-            } else if (t1 > t2) {
-                result = n1 - n2 * (t1 / t2)
-            } else {
-                result = n1 * (t2 / t1) - n2
-            }
-        return result / max;
-        case 'multiply':
-            result = (n1 * n2) / (t1 * t2);
-        return result;
+		case 'add': //加
+			{
+				if (t1 === t2) { // 两个小数位数相同
+					result = n1 + n2
+				} else if (t1 > t2) { // o1 小数位 大于 o2
+					result = n1 + n2 * (t1 / t2)
+				} else { // o1 小数位 小于 o2
+					result = n1 * (t2 / t1) + n2
+				}
+			return result / max;
+		   }
+		case 'subtract': //减
+		   {
+				if (t1 === t2) { // 两个小数位数相同
+					result = n1 - n2
+				} else if (t1 > t2) {
+					result = n1 - n2 * (t1 / t2)
+				} else {
+					result = n1 * (t2 / t1) - n2
+				}
+				return result / max;
+		   }
+		case 'multiply'://乘
+			{
+            	result = (n1 * n2) / (t1 * t2);
+				return result;
+			}
        	case 'divide':
-            result = (n1 / n2) * (t2 / t1);
-        return result
+			{
+				result = (n1 / n2) * (t2 / t1);
+				return result
+			}
         }
     };
     // 加减乘除的四个接口
@@ -57,13 +65,13 @@ class Test{
         return this.operation(a,b,'add')
     };
     subtract(a, b){
-        return operation(a, b, 'subtract')
+        return this.operation(a, b, 'subtract')
     };
     multiply(a, b){
-        return operation(a, b, 'multiply')
+        return this.operation(a, b, 'multiply')
     };
     divide(a, b){
-        return operation(a, b, 'divide')
+        return this.operation(a, b, 'divide')
     };
 
 }
